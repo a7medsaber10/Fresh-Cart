@@ -1,0 +1,50 @@
+<app-loader *ngIf="isLoading"></app-loader>
+
+<div class="accountSettings  my-5 w-50 mx-auto">
+    <div class="shadow p-4 rounded">
+        <div class="row pt-4 align-items-center">
+            <!-- <div class="row"> -->
+                <div class="account-image col-md-5 col-sm-6 ms-3 pb-4">
+                    <!-- <i class="fa-solid fa-user p-3 bg-body-tertiary rounded-circle"></i> -->
+                    <figure >
+                        <img [src]="url" class="w-100 rounded-circle" id="profile-pic"  style="height: 180px !important; width: 180px !important;" alt="profile picture">
+                    </figure>
+                    <label for="input-file" class="image-button d-block bg-main text-white p-1 rounded-3 fw-bolder cursor-pointer text-center" style="width: 200px;">Update Image</label>
+                    <input type="file" accept="image/jpeg, image/jpg, image/png" class="d-none" (change)="onSelect($event)" id="input-file">
+                </div>
+                <div class="col-md-6">
+                    <!-- <h4 class="fw-bolder ">Your Info</h4> -->
+                    <p class="fw-bolder">
+                        <span class="text-body-tertiary fs-6">Name:</span>
+                        {{userName}}
+                    </p>
+                    <p class="fw-bolder">
+                        <span class="text-body-tertiary fs-6">Email:</span>
+                        {{userEmail}}
+                    </p>
+                    <p class="fw-bolder  ">
+                        <span class="text-body-tertiary fs-6">your Role:</span>
+                        {{userRole}}
+                    </p>
+                </div>
+        </div>
+
+        <div class="update">
+            <div class=" p-3 rounded my-4  bg-body-tertiary">
+                <a [routerLink]="['/settings/updateData']" class=" fs-5">
+                    <i class="fa-solid fa-pen-to-square me-2"></i>
+                    <span>Update Your Data</span>
+                </a>
+            </div>
+
+            <div class=" p-3 rounded my-4  bg-body-tertiary">
+                <a [routerLink]="['/settings/updatePassword']" class=" fs-5">
+                    <i class="fa-solid fa-wrench me-2"></i>
+                    <span>Update Your Password</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+

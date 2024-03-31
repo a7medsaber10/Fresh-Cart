@@ -1,0 +1,10 @@
+@media screen and (max-width: 992px) {
+    .form-container {
+        width: 100% !important;
+        padding: 15px !important;
+    }
+}
+
+.form-container {
+    margin-top: 100px;
+}

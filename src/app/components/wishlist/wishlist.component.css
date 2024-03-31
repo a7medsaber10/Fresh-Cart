@@ -1,0 +1,17 @@
+.empty-list {
+    width: 600px;
+}
+
+@media screen and (max-width:768px) {
+    .empty-list {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width:567px) {
+    .empty-list {
+        width: 330px;
+    }
+}
+
+@import url('../home//home.component.css');

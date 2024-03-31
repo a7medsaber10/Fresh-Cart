@@ -1,0 +1,58 @@
+@media screen and (max-width: 992px) {
+    .register {
+        width: 100% !important;
+        padding: 15px !important;
+    }
+}
+
+.main_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--main-color);
+    font-weight: 400;
+    font-size: 40px;
+    transition: 0.5s ease;
+}
+
+.main_logo img {
+    width: 60px;
+    height: 60px;
+    padding-right: 10px;
+}
+
+.main_logo span {
+    position: relative;
+    color: transparent;
+    -webkit-text-stroke: 0.5px var(--main-color);
+}
+.main_logo span::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: fit-content;
+    height: 100%;
+    color: var(--main-color);
+    -webkit-text-stroke: 0 var(--main-color);
+    border-right: 3px solid var(--main-color);
+    overflow: hidden;
+    animation: animate 4s both infinite;
+}
+
+@keyframes animate {
+    0%,10%,100%
+    {
+        width: 0;
+    }
+    70%,90%
+    {
+        width: 100%;
+    }
+}
+
+.eye-icon {
+    right: 15px;
+    top: 30px;
+    cursor: pointer;
+}

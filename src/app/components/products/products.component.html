@@ -1,0 +1,64 @@
+<app-loader *ngIf="isLoading"></app-loader>
+
+
+<div class="container">
+
+    <div class="pt-5">
+        <input [(ngModel)]="term" type="text" class="form-control w-50 mx-auto" placeholder="search by title ........">
+    </div>
+
+    <div class="row pt-4">
+        <div #product *ngFor="let product of productList|search:term" class="products col-xl-2 col-md-3 col-sm-6">
+            <div class="product rounded-3 p-3">
+                <div>
+                    <ul class="product-info list-unstyled text-white">
+                        <li class="cursor-pointer" [routerLink]="['/productdetails', product._id]">
+                            <i class="fa fa-search fs-6"></i>
+                        </li>
+        
+                        <li class="cursor-pointer" *ngIf="!wishListIDs.includes(product._id) " (click)="addProductToWishList(product._id)">
+                            <i class="fa-regular fa-heart fs-6"></i>
+                        </li>
+    
+                        <li class="cursor-pointer" *ngIf="wishListIDs.includes(product._id) " (click)="removeProductFromWishList(product._id)">
+                            <i class="fa-solid fa-heart fs-6"></i>
+                        </li>
+        
+                        <li class="cursor-pointer" *ngIf="!cartListIDs.includes(product._id) " (click)="addProductToCart(product._id)">
+                            <i class="fa-solid fa-cart-plus  fs-6"></i>
+                        </li>
+                        <li class="cursor-pointer" *ngIf="cartListIDs.includes(product._id) " (click)="removeProductFromCart(product._id)">
+                            <i class="fa-solid fa-cart-shopping text-main  fs-6"></i>
+                        </li>
+                    </ul>
+                    <div class="product-desc">
+                        <figure>
+                            <img [src]="product.imageCover" class="w-100" alt="product">
+                        </figure>
+                        <div class="d-flex justify-content-between">
+                            <span class="font-sm text-main fw-bolder">{{product.category.name}}</span>
+                            <div>
+                                <span class="cursor-pointer me-1" *ngIf="wishListIDs.includes(product._id) " (click)="removeProductFromWishList(product._id)">
+                                    <i class="fa-solid fa-heart font-sm text-danger"></i>
+                                </span>
+                                <span class="cursor-pointer ms-1" *ngIf="cartListIDs.includes(product._id)  " (click)="removeProductFromCart(product._id)">
+                                    <i class="fa-solid fa-cart-shopping text-main font-sm"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <h3 class="font-sm fw-bolder pb-2 pt-1">{{this.product.title.split(" ").splice(0,2).join(" ")}}</h3>
+                        <div class="d-flex justify-content-between font-sm">
+                            <p class="fw-medium ">{{product.price|currency:'EGP '}} </p>
+                            <span>{{product.ratingsAverage}} <i class="fas fa-star rating-color"></i> </span>
+                        </div>
+                    </div>
+                </div>
+
+                <button (click)="addProductToCart(product._id)" class="btn bg-main product-button text-white w-100">+ Add to cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,16 @@
+<app-loader *ngIf="isLoading"></app-loader>
+
+<div class="container">
+    <div class="row">
+        <div class=" col-lg-3 col-md-4 col-sm-6" *ngFor="let brand of brandsList">
+            <div class="product p-3 rounded-3 mt-5 cursor-pointer" [routerLink]="['/brand-description', brand._id]">
+                <figure>
+                    <img [src]="brand.image" class="w-100" [alt]="brand.name">
+                </figure>
+                <figcaption>
+                    <p class="text-center text-main fs-5 fw-bolder">{{brand.name}}</p>
+                </figcaption>
+            </div>
+        </div>
+    </div>
+</div>

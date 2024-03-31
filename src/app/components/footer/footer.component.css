@@ -1,0 +1,42 @@
+.partners,
+.delivery {
+    display: flex;
+    align-items: center;
+}
+
+.delivery img {
+    width: 105px;
+}
+
+.social-links i {
+    color: white;
+    font-size: 22px;
+    transition: color .3s;
+}
+
+.social-links i:hover {
+    color: var(--main-color);
+}
+
+@media screen and (max-width: 992px) {
+    
+    .partners,
+    .delivery {
+        justify-content: space-between;
+    }
+    
+    .form-control,
+    .partners,
+    .delivery {
+        width: 100% !important;
+    }
+
+    .btn {
+        padding: 8px !important;
+    }
+}
+@media screen and (max-width: 576px) {
+    .delivery-content{
+        width: 75%;
+    }
+}

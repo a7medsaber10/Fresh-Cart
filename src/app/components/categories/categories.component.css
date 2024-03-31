@@ -1,0 +1,23 @@
+@media screen and (min-width:576px) {
+    figure img {
+        height: 250px;
+    }
+}
+@media screen and (min-width:1199px) {
+    figure img {
+        height: 300px;
+    }
+}
+
+
+.product {
+    transition: 0.5s;
+    overflow: hidden;   
+}
+
+.product:hover
+{
+    transform: scale(1);
+    box-shadow: 1px 1px 10px #0aad0a ;
+    border: none;
+}

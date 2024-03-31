@@ -1,0 +1,38 @@
+<app-loader *ngIf="isLoadingLayerMethod()"></app-loader>
+
+<div class="container">
+    <div class="form-container mb-5 w-50 mx-auto shadow-lg p-5 rounded-4">
+        <form [formGroup]="shippingAddress" (ngSubmit)="submitShippingAddress()">
+            <div class="mb-3">
+                <label for="">Name :</label>
+                <input formControlName="details" type="text" class="form-control">
+                <div class="alert alert-danger my-2 rounded p-2" *ngIf="shippingAddress.get('details')?.touched && shippingAddress.get('details')?.errors">
+                    <p class="mb-0 " *ngIf="shippingAddress.get('details')?.errors?.['required']"> Input is required</p>
+                    <p class="mb-0" *ngIf="shippingAddress.get('details')?.errors?.['minlength']">Min length is 4</p>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="">Phone :</label>
+                <input formControlName="phone" type="tel" class="form-control">
+                <div *ngIf="shippingAddress.get('phone')?.errors && shippingAddress.get('phone')?.touched " class="alert alert-danger my-2 rounded p-2">
+                    <p class="mb-0" *ngIf="shippingAddress.get('phone')?.errors?.['required']">Input is required</p>
+                    <p class="mb-0" *ngIf="shippingAddress.get('phone')?.errors?.['pattern']">Enter valid phone number</p>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="">City :</label>
+                <input formControlName="city" type="text" class="form-control">
+                <div class="alert alert-danger my-2 rounded p-2" *ngIf="shippingAddress.get('city')?.touched && shippingAddress.get('city')?.errors">
+                    <p class="mb-0 " *ngIf="shippingAddress.get('city')?.errors?.['required']">Input is required</p>
+                    <p class="mb-0" *ngIf="shippingAddress.get('city')?.errors?.['minlength']">Min length is 4</p>
+                    <p class="mb-0" *ngIf="shippingAddress.get('city')?.errors?.['maxlength']">Max length is 20</p>
+                </div>
+            </div>
+    
+            <button class="btn bg-main scale-animation text-white ms-auto d-block fw-bold px-5 py-2" [disabled]="shippingAddress.invalid">
+                <span *ngIf="!isLoading">Buy Now</span>
+                <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>
+            </button>
+        </form>
+    </div>
+</div>

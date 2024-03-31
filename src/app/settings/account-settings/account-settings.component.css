@@ -1,0 +1,13 @@
+@media screen and (max-width: 992px) {
+    .accountSettings {
+        width: 100% !important;
+    }
+    .row{
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 567px){
+    .account-image {
+        width: 50%;
+    }
+}

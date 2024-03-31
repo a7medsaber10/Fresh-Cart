@@ -1,0 +1,95 @@
+<app-loader *ngIf="isLoading"></app-loader>
+
+<section class="">
+    <div class="container my-5">
+        <div class="orderDetails  mt-4 mb-5 ">
+            <h2 class=" fw-bolder">Order Details</h2>
+        
+            <div class=" shadow py-3 px-4 rounded my-4 " *ngFor="let orderDetails of specificOrder">
+            
+                <div class="mb-3 mt-2">
+                    <p class="fw-bolder mb-1">Order ID: #{{orderDetails.id}}</p>
+                    <p class=" font-sm text-body-secondary fw-bolder mb-1"> {{orderDetails.paidAt | date:'fullDate'}}</p>
+                    <p class="fw-bolder mb-1 mt-2 font-sm">
+                        <span class="text-body-tertiary">Payment Method: </span>
+                        <span class=" font-sm bg-warning-subtle  py-1 px-2 text-danger rounded-pill fw-bolder">
+                            {{orderDetails.paymentMethodType}}
+                        </span>
+                    </p>
+                </div>
+        
+                <div class="row pt-4 g-5 mb-5">
+                    <div class="col-md-6 d-flex">
+                        <div class="me-3 pb-4">
+                            <i class="fa-solid fa-user p-3 bg-body-tertiary rounded-circle"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bolder ">Customer Info</h5>
+                            <p class="fw-bolder mb-1 font-sm">
+                                <span class="text-body-tertiary">Name:</span>
+                                {{orderDetails.user.name}}
+                            </p>
+                            <p class="fw-bolder mb-1 font-sm">
+                                <span class="text-body-tertiary">Email:</span>
+                                {{orderDetails.user.email}}
+                            </p>
+                            <p class="fw-bolder mb-1 font-sm">
+                                <span class="text-body-tertiary">Phone:</span>
+                                {{orderDetails.user.phone}}
+                            </p>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-6 d-flex">
+                        <div class="me-3 pb-4">
+                            <i class="fa-solid fa-cart-shopping p-3 bg-body-tertiary rounded-circle"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bolder ">Order Info</h5>
+                            <p class="fw-bolder mb-1 font-sm">
+                                <span class="text-body-tertiary">Name:</span>
+                                {{orderDetails.shippingAddress.details}}
+                            </p>
+                            <p class="fw-bolder mb-1 font-sm">
+                                <span class="text-body-tertiary">City:</span>
+                                {{orderDetails.shippingAddress.city}}
+                            </p>
+                            <p class="fw-bolder mb-1 font-sm">
+                                <span class="text-body-tertiary">Phone:</span>
+                                {{orderDetails.shippingAddress.phone}}
+                            </p>
+                        </div>
+                    </div>
+        
+                </div>
+        
+                <div class="table-responsive border border-3 border-light rounded m-md-3 ">
+                    <table class="table mb-0 rounded">
+                        <thead>
+                            <tr class="table-light fw-bolder">
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of orderDetails.cartItems">
+                                <td>
+                                    <div class="d-flex align-items-center cursor-pointer" [routerLink]="['/productdetails', item.product._id]">
+                                        <img [src]="item.product.imageCover" style="width: 40px;">
+                                        <span class="ms-2 fw-bolder font-sm">{{item.product.title}}</span>
+                                    </div>
+                                </td>
+                                <td>{{item.price| currency: ' '}} EGP</td>
+                                <td>
+                                    <div class=" w-75 mx-auto">{{item.count}}</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+</section>

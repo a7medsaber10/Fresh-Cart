@@ -1,0 +1,52 @@
+<app-loader *ngIf="isLoading"></app-loader>
+
+<section>
+    <div class="container">
+        <div *ngIf="orders.length === 0" class="not-found mx-auto pt-5 pb-3">
+            <img src="assets/No-Orders.svg" class="w-100" alt="No-Orders">
+        </div>
+    
+        <div *ngIf="orders.length > 0" class="table-responsive  border border-3 border-light rounded m-5">
+            <table class="table mb-1">
+                <thead>
+                    <tr>
+                        <th class="text-center text-danger fw-bolder" colspan="5">Orders</th>
+                    </tr>
+                </thead>
+        
+                <tbody class=" text-center">
+                    <tr class="table-light fw-bolder">
+                        <td>No.</td>
+                        <td>Total</td>
+                        <td>Is Paid</td>
+                        <td>Is Delivered</td>
+                        <td>Action</td>
+                    </tr>
+        
+                    <tr *ngFor="let order of orders; let i = index">
+                        <td class="text-center">{{i+1}}</td>
+                        <td>{{order.totalOrderPrice|currency:' '}} EGP</td>
+                        <td>
+                            <span [class]="order.isPaid ? ' font-sm bg-success-subtle p-1 text-success rounded fw-bolder' : ' font-sm bg-info p-1  rounded fw-bolder'">{{order.isPaid}}</span>
+                        </td>
+                        <td>
+                            <span [class]="!order.isDelivered ? ' font-sm bg-danger-subtle p-1 text-danger rounded fw-bolder' : ' font-sm bg-success-subtle p-1 text-success rounded fw-bolder ' ">{{order.isDelivered}}</span>
+                        </td>
+                        <td>
+                            <button class="btn bg-main text-white d-block mx-auto" [routerLink]="['/order-details', order._id]">Details</button>
+                        </td>
+                    </tr>
+                </tbody>
+        
+                <tfoot>
+                    <td colspan="5">
+                        <p class="text-primary  fw-bolder fs-6 my-1 ms-2 cursor-pointer" [routerLink]="['/products']">
+                            New Orders <i class="fab fa-plus"></i>
+                        </p>
+                    </td>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    
+</section>

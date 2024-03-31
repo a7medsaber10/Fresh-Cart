@@ -1,0 +1,37 @@
+<app-loader *ngIf="!isLoadingLayer"></app-loader>
+
+<div class="container">
+    <div class="row">
+        <div class="verifyCode shadow p-3 rounded my-4 w-50 mx-auto">
+            <h3 class="my-4">Enter Reset Code :</h3>
+    
+            <form [formGroup]="verifyCodeForm" (ngSubmit)="verifyCode(verifyCodeForm)">
+                
+                <div *ngIf="apiError.length > 1" class="alert alert-danger">
+                    {{apiError}}
+                </div>
+    
+                <div class=" mb-2">
+                    <label for="verifyCodeInput" class="form-label">Reset Code:</label>
+                    <input formControlName="resetCode" type="text" id="verifyCodeInput" [class]="
+                    verifyCodeForm.get('resetCode')?.errors==null ? 
+                        'form-control is-valid' :
+                        verifyCodeForm.get('resetCode')?.errors?.['resetCode']?
+                        'form-control is-invalid' : 'form-control'">
+                    <div *ngIf="verifyCodeForm.get('resetCode')?.errors && verifyCodeForm.get('resetCode')?.touched "
+                        class="alert alert-danger my-2 rounded p-2">
+                        <p class="mb-0" *ngIf="verifyCodeForm.get('resetCode')?.errors?.['required']">Input is required</p>
+                        <p class="mb-0" *ngIf="verifyCodeForm.get('resetCode')?.errors?.['pattern']">Enter Valid Code
+                        </p>
+                    </div>
+                </div>
+                
+                <button class="btn bg-main text-white mt-3 d-block ms-auto w-25" [disabled]=" verifyCodeForm.invalid">
+                    <span *ngIf="!isLoading">Send </span>
+                    <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>
+                </button>
+            </form>
+    
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<mat-accordion>
+    <form [formGroup]="updateUserDataForm" (ngSubmit)="updateUserData(updateUserDataForm)">
+        <div *ngIf="apiMessage.length > 1 && isError" class="alert alert-danger">
+            {{apiMessage}}
+        </div>
+        <div *ngIf="apiMessage.length > 1 && !isError" class="alert alert-success">
+            {{apiMessage}}
+        </div>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mb-3">
+
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Name:
+                </mat-panel-title>
+                <mat-panel-description>
+                    Edit Your Name
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class=" mb-2">
+                <input formControlName="name" type="text" id="nameInput" class="form-control">
+                <div *ngIf="updateUserDataForm.get('name')?.errors && updateUserDataForm.get('name')?.touched " class="alert alert-danger my-2 rounded p-2">
+                    <p class="mb-0" *ngIf="updateUserDataForm.get('name')?.errors?.['required']">Input is required</p>
+                    <p class="mb-0" *ngIf="updateUserDataForm.get('name')?.errors?.['minlength']">Min length is 4
+                    <p class="mb-0" *ngIf="updateUserDataForm.get('name')?.errors?.['maxlength']">Min length is 20</p>
+                </div>
+            </div>
+
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mb-3">
+
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Email:
+                </mat-panel-title>
+                <mat-panel-description>
+                    Edit Your Email
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class=" mb-2">
+                <input formControlName="email" type="text" id="emailInput" class="form-control">
+                <div *ngIf="updateUserDataForm.get('email')?.errors && updateUserDataForm.get('email')?.touched "
+                    class="alert alert-danger my-2 rounded p-2">
+                    <p class="mb-0" *ngIf="updateUserDataForm.get('email')?.errors?.['required']">Input is required</p>
+                    <p class="mb-0" *ngIf="updateUserDataForm.get('email')?.errors?.['email']">Email must be valid one
+                    </p>
+                </div>
+            </div>
+
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mb-3">
+
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Phone:
+                </mat-panel-title>
+                <mat-panel-description>
+                    Change Phone Number
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="mb-2">
+                <input formControlName="phone" type="tel" class="form-control" id="phoneInput" />
+                <div class="alert alert-danger my-2 rounded p-2"
+                    *ngIf="updateUserDataForm.get('phone')?.touched && updateUserDataForm.get('phone')?.errors">
+                    <p class="mb-0" *ngIf="updateUserDataForm.get('phone')?.errors?.['required']">Input is required</p>
+                    <p class="mb-0" *ngIf="updateUserDataForm.get('phone')?.errors?.['pattern']">
+                        Enter valid egyptian phone number</p>
+                </div>
+            </div>
+
+        </mat-expansion-panel>
+        <div class="d-flex justify-content-between">
+            <button class="btn bg-main text-white mt-3" [routerLink]="['/settings/accountSettings']">
+                <span >Go Back</span>
+                <!-- <i  class="fa fa-spinner fa-spin"></i> -->
+            </button>
+            <button class="btn bg-main text-white mt-3" [disabled]=" updateUserDataForm.invalid">
+                <span *ngIf="!isLoading"> Update</span>
+                <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>
+            </button>
+        </div>
+    </form>    
+</mat-accordion>
+  

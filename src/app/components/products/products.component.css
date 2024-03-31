@@ -1,0 +1,23 @@
+@import url(../home/home.component.css);
+
+@media screen and (max-width: 576px) {
+    .product-info {
+        padding: 10px;
+    }
+  
+    .product-info i {
+        padding: 10px 5px;
+        font-size: 18px !important;
+    }
+  
+    .product {
+      width: 150px;
+    }
+    .row>.products {
+      max-width: 50%;
+      justify-content: center;
+    }
+    .product-button {
+      font-size: 12px;
+    }
+}

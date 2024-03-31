@@ -1,0 +1,40 @@
+<app-loader *ngIf="isLoading"></app-loader>
+
+<div class="container pb-5">
+
+
+    <div *ngIf="productList.length == 0" class="empty-list mx-auto pt-5">
+        <img src="assets/empty_cart.svg" class="w-100" alt="empty_cart">
+    </div>
+
+    <div  *ngIf="!errorMessage && productList.length > 0">
+        <div class="d-flex justify-content-between mt-5 mb-3">
+            <p class="text-main"><span class="fw-bolder">Number Of Cart Items</span>: {{numOfCartItems}}</p>
+            <p class="text-main"><span class="fw-bolder">Total Price</span>: {{totalPrice}}</p>
+        </div>
+    
+        <button (click)="clearCart()" class="btn btn-outline-danger ms-auto d-block mb-3">Clear Cart</button>
+    
+        <div *ngFor="let productItem of productList" class="row shadow-lg p-4 rounded-3 mb-3">
+            <div class="col-md-1">
+                <img [src]="productItem.product.imageCover" class="w-100" alt="">
+            </div>
+            <div class="col-md-11 d-flex justify-content-between">
+                <div>
+                    <h4>{{productItem.product.title}}</h4>
+                    <p>price: {{productItem.price|currency:'LE'}}</p>
+                    <span (click)="removeProductFromCart(productItem.product.id)"  class="cursor-pointer text-danger">Remove Product <i class="fa fa-trash"></i> </span>
+                </div>
+    
+                <div>
+                    <button [disabled]="productItem.count == productItem.product.quantity" (click)="updateCartProductQuantity(productItem.product.id, productItem.count + 1, $event)" class="btn bg-main text-white fs-5 fw-bolder">+</button>
+                    <span class="p-3">{{productItem.count}}</span>
+                    <button [disabled]="productItem.count == 1" (click)="updateCartProductQuantity(productItem.product.id, productItem.count - 1, $event)" class="btn bg-main text-white fs-5 fw-bolder">-</button>
+                </div>
+            </div>
+        </div>
+    
+        <button class="btn bg-main scale-animation text-white ms-auto d-block fw-bold px-5 py-2" [routerLink]="['/shippingAdderss', cartId]">Checkout Now</button>
+    </div>
+</div>
+

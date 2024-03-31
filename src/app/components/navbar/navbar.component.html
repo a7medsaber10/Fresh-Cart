@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-lg navbar-light sticky-top py-lg-1">
+    <div class="container">
+        <a class="navbar-brand"  [routerLink]="['/home']">
+            <img src="assets/freshcart-logo.svg" alt="logo" class="cursor-pointer">
+        </a>
+        <button #navbarToggler class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div #navbarCollapse class="collapse navbar-collapse fw-bold" id="navbarSupportedContent">
+            <ul *ngIf="isLogin" class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                <li class="nav-item">
+                    <a class="nav-link d-inline-block p-2"  [routerLink]="['/home']" [routerLinkActive]="['bg-main', 'text-white']"  (click)="closeNav()">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-inline-block p-2"  [routerLink]="['/products']" [routerLinkActive]="['bg-main', 'text-white']"  (click)="closeNav()">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-inline-block p-2"  [routerLink]="['/categories']" [routerLinkActive]="['bg-main', 'text-white']"  (click)="closeNav()">Categories</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link d-inline-block p-2"  [routerLink]="['/cart']" [routerLinkActive]="['bg-main', 'text-white']" >Cart</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link d-inline-block p-2"  [routerLink]="['/brands']" [routerLinkActive]="['bg-main', 'text-white']" (click)="closeNav()">Brands</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-inline-block p-2"  [routerLink]="['/allorders']" [routerLinkActive]="['bg-main', 'text-white']" (click)="closeNav()">All Orders</a>
+                </li>
+            </ul>
+
+            <hr>
+
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="icons">
+                        <li class="nav-item d-flex align-items-center">
+                            <a href="#" class="icon pe-3 "><i class="fa fa-brands fa-facebook"></i></a>
+                            <a href="#" class="icon pe-3 "><i class="fa fa-brands fa-x-twitter"></i></a>
+                            <a href="#" class="icon pe-3 "><i class="fa fa-brands fa-linkedin"></i></a>
+                            <a href="#" class="icon pe-3 "><i class="fa fa-brands fa-tiktok"></i></a>
+                            <a href="#" class="icon pe-3 "><i class="fa fa-brands fa-instagram"></i></a>
+                            <a href="#" class="icon pe-3 "><i class="fa fa-brands fa-youtube"></i></a>
+                        </li>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <li *ngIf="isLogin" class="nav-item ">
+                            <a class="nav-link d-inline-block p-2 icon cursor-pointer" *ngIf="isLogin" [routerLink]="['/settings/accountSettings']" (click)="closeNav()">
+                                <i class="fa-solid fa-circle-user fs-4 "></i>
+                            </a>
+                        </li>
+                        
+                        <li  *ngIf="isLogin" class="nav-item">
+                            <a class="nav-link d-inline-block p-2 icon cursor-pointer position-relative" *ngIf="isLogin" [routerLink]="['/cart']" (click)="closeNav()">
+                                <i class="fa fa-cart-shopping fa-1x p-2"></i>
+                                <span *ngIf="numOfCartItems != 0" class="badge bg-danger text-white rounded-circle position-absolute top-0 end-0">{{numOfCartItems}}</span>
+                            </a>
+                        </li>
+                        <li  *ngIf="isLogin" class="nav-item">
+                            <a class="nav-link d-inline-block p-2 icon cursor-pointer position-relative" *ngIf="isLogin" [routerLink]="['/wishlist']" (click)="closeNav()">
+                                <i class="fa-regular fa-heart fa-1x p-2"></i>
+                                <span *ngIf="numOfWishListItems != 0" class="badge bg-danger text-white rounded-circle position-absolute top-0 end-0">{{numOfWishListItems}}</span>
+                            </a>
+                        </li>    
+                    </div>
+                    <div>
+                        <li (click)="_AuthService.logOut()" class="nav-item logout">
+                            <a class="nav-link d-inline-block p-2 cursor-pointer" *ngIf="isLogin" [routerLinkActive]="['bg-main', 'text-white']"  (click)="closeNav()">
+                                Log Out
+                                <i class="fa-solid fa-right-from-bracket fs-6"></i>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link d-inline-block p-2" *ngIf="!isLogin" [routerLink]="['/register']" [routerLinkActive]="['bg-main', 'text-white']"  (click)="closeNav()">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-inline-block p-2" *ngIf="!isLogin" [routerLink]="['/login']" [routerLinkActive]="['bg-main', 'text-white']"  (click)="closeNav()">Login</a>
+                        </li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>

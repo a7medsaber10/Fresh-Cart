@@ -1,0 +1,44 @@
+.icon {
+    color: black;
+    transition: 0.5s;
+}
+
+.icon:hover {
+    color: var(--main-color);
+}
+
+.navbar {
+    background-color: rgb(142 176 140);
+}
+
+.logout a {
+    transition: color .3s;
+}
+
+.logout a:hover {
+    color: var(--main-color);
+}
+
+@media screen and (max-width:992px) {
+
+    .notUser,
+    .user {
+        justify-content: space-between;
+    }
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.15rem var(--main-color);
+}
+
+
+@media screen and (max-width: 576px){
+    .icons{
+        display: none;
+    }
+}
+@media screen and (max-width: 1200px) and (min-width: 992px){
+    .icons{
+        display: none;
+    }
+}

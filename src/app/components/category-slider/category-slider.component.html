@@ -1,0 +1,14 @@
+<div class="px-5 bg-black">
+  <h2 class="p-3 text-main h4 fw-bolder text-center mt-5">Popular Categories</h2>
+
+  <owl-carousel-o [options]="customOptions">
+
+      <ng-container *ngFor="let category of categoryList">
+        <ng-template carouselSlide [id]="category._id">
+          <img height="300" [src]="category.image" [alt]="category.name">
+          <h6 class="text-white text-center pt-2">{{category.name}}</h6>
+        </ng-template>
+      </ng-container>
+  </owl-carousel-o>
+</div>
+ 
