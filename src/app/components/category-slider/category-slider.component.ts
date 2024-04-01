@@ -55,3 +55,4 @@ export class CategorySliderComponent implements OnInit{
   }
 
 }
+
