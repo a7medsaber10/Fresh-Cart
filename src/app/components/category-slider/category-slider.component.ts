@@ -9,8 +9,6 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./category-slider.component.css']
 })
 export class CategorySliderComponent implements OnInit{
-
-
   customOptions: OwlOptions = {
     loop: true,
     rtl: true,
@@ -55,3 +53,4 @@ export class CategorySliderComponent implements OnInit{
   }
 
 }
+
