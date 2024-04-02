@@ -35,6 +35,7 @@ export class ProductsComponent implements OnInit {
   }
 
   getAllProducts() {
+    document.body.style.overflowX = 'hidden'
     this._ProductService.getAllProducts().subscribe({
       next: (response) => {
         this.isLoading = false

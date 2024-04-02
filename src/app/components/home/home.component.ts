@@ -43,6 +43,7 @@ export class HomeComponent implements OnInit{
 
   productImage:any;
   getAllProducts() {
+    document.body.style.overflowX = 'hidden'
     this._ProductService.getAllProducts().subscribe({
       next: (response) => {
         console.log(response.data[0]);
