@@ -1,6 +1,6 @@
 <app-loader *ngIf="isLoading"></app-loader>
 
-<div class="container">
+<div class="container pb-3">
     <div class="row">
         <div class=" col-lg-3 col-md-4 col-sm-6" *ngFor="let brand of brandsList">
             <div class="product p-3 rounded-3 mt-5 cursor-pointer" [routerLink]="['/brand-description', brand._id]">
