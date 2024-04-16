@@ -1,6 +1,10 @@
+body {
+    min-height: 100vh;
+}
 
 footer {
-    margin-top: auto;
+    position: sticky;
+    top: 100%;
 }
 
 .partners,
